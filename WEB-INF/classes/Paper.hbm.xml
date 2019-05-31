@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  >
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <class name="cn.itcast.entity.Paper" table="t_paper" >
+        <id name="paper_id" column="paper_id">
+            <!-- 值native表示会根据数据库来创建不同的主键生成策略 -->
+            <generator class="uuid"></generator>
+        </id>
+        <property name="lis" column="lis" length="200"></property>
+        <property name="ans" column="ans"></property>
+        <property name="title" column="title" length="200"></property>
+        <property name="author" column="author" length="200"></property>
+        <property name="org" column="org" length="2000"></property>
+        <!-- 表示试卷的所有题目 -->
+        <set name="ques" cascade="save-update,delete">
+            <key column="pqid"></key>
+            <one-to-many class="cn.itcast.entity.Que"/>
+        </set>
+    </class>
+
+</hibernate-mapping>

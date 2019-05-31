@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  >
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <class name="cn.itcast.entity.User" table="t_user" >
+        <id name="user_id" column="user_id">
+            <!-- 值native表示会根据数据库来创建不同的主键生成策略 -->
+            <generator class="native"></generator>
+        </id>
+        <property name="user_username" column="user_username"></property>
+        <property name="user_password" column="user_password"></property>
+        <property name="user_note" column="user_note"></property>
+        <property name="user_phone" column="user_phone"></property>
+        <property name="user_email" column="user_email"></property>
+    </class>
+
+</hibernate-mapping>

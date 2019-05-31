@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  >
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <class name="cn.itcast.entity.Que" table="t_que" >
+        <id name="que_id" column="que_id">
+            <!-- 值native表示会根据数据库来创建不同的主键生成策略 -->
+            <generator class="uuid"></generator>
+        </id>
+        <property name="des" column="des" type="text" length="20000"></property>
+        <property name="cho" column="cho"></property>
+        <property name="ans" column="ans" length="2000"></property>
+        <many-to-one name="paper" class="cn.itcast.entity.Paper" column="pqid" lazy="false"></many-to-one>
+    </class>
+
+</hibernate-mapping>

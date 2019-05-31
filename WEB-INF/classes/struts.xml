@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+    <!-- 设置上传文件大小 -->
+    <constant name="struts.multipart.maxSize" value="2097152000"></constant>
+
+    <package name="demo1" extends="json-default" namespace="/">
+        <action name="user_*" class="userAction" method="{1}">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+
+        <!-- 上传下载普通文件 -->
+        <action name="docu_upload" class="cn.itcast.action.DocuAction" method="upload">
+            <interceptor-ref name="defaultStack">
+                <param name="fileUpload.allowedExtensions">jpg,jpeg,gif,txt,doc,docx,pdf,pptx,ppt,mp3,mp4,avi,rmvb,wmv,flv</param>
+            </interceptor-ref>
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+        <action name="docu_getall" class="cn.itcast.action.DocuAction" method="getall">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+        <action name="docu_gecount" class="cn.itcast.action.DocuAction" method="gecount">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+        <action name="docu_gecount_suf" class="cn.itcast.action.DocuAction" method="gecount_suf">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+        <action name="docu_geDocu" class="cn.itcast.action.DocuAction" method="geDocu">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+        <action name="docu_geDocu_suf" class="cn.itcast.action.DocuAction" method="geDocu_suf">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+        <action name="docu_delete" class="cn.itcast.action.DocuAction" method="delete">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+
+        <action name="docu_download" class="cn.itcast.action.DocuAction" method="download">
+            <result name="ok" type="stream">
+
+                <param name="inputName">is</param>
+                <!-- attachment标示告诉浏览器是附件，不要打开 -->
+                <param name="contentDisposition">attachment;filename=${docu_name}</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+
+        <action name="docu_downloadcover" class="cn.itcast.action.DocuAction" method="downloadcover">
+            <result name="ok" type="stream">
+                <param name="inputName">is</param>
+                <!-- attachment标示告诉浏览器是附件，不要打开 -->
+                <param name="contentDisposition">attachment;filename=${docu_name}</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+
+
+        <action name="docu_isexist" class="cn.itcast.action.DocuAction" method="isexist">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+
+        <action name="docu_pdfshow" class="cn.itcast.action.DocuAction" method="pdfshow">
+            <result type="stream" name="ok">
+                <param name="inputName">is</param>
+                <param name="contentType">application/pdf;charset=utf-8</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+
+
+        <!--<action name="linkman_*" class="linkManAction" method="{1}">
+
+            <interceptor-ref name="defaultStack">
+
+                <param name="fileUpload.allowedExtensions">jpg,jpeg,gif,txt</param>
+            </interceptor-ref>
+
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+            <result name="input">"nono"</result>
+        </action>-->
+        <action name="paper_upload" class="cn.itcast.action.PaperAction" method="upload">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+
+        <action name="paper_gtinfo" class="cn.itcast.action.PaperAction" method="gtinfo">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+
+        <action name="paper_gttesall" class="cn.itcast.action.PaperAction" method="gttesall">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+
+        <action name="reading_add" class="cn.itcast.action.ReadingAction" method="add">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+
+        <action name="reading_gtall" class="cn.itcast.action.ReadingAction" method="gtall">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+
+        <action name="reading_gtone" class="cn.itcast.action.ReadingAction" method="gtone">
+            <result name="ok" type="json">
+                <param name="root">myjson</param>
+            </result>
+        </action>
+    </package>
+    <constant name="struts.action.excludePattern" value="ws://*"></constant>
+
+</struts>

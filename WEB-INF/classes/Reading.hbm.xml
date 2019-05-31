@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  >
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <class name="cn.itcast.entity.Reading" table="t_reading" >
+        <id name="reading_id" column="reading_id">
+            <!-- 值native表示会根据数据库来创建不同的主键生成策略 -->
+            <generator class="uuid"></generator>
+        </id>
+        <property name="article" column="article" type="text" length="20000"></property>
+        <property name="ans" column="ans"></property>
+        <property name="title" column="title" length="2000"></property>
+        <property name="author" column="author"></property>
+    </class>
+
+</hibernate-mapping>

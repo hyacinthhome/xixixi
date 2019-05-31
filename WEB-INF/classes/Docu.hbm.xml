@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  >
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <class name="cn.itcast.entity.Docu" table="t_docu" >
+        <id name="docu_id" column="docu_id">
+            <!-- 值native表示会根据数据库来创建不同的主键生成策略 -->
+            <generator class="native"></generator>
+        </id>
+        <property name="docu_name" column="docu_name"></property>
+        <property name="docu_path" column="docu_path"></property>
+        <property name="docu_time" column="docu_time"></property>
+        <property name="docu_cata" column="docu_cata"></property>
+        <property name="docu_suffix" column="docu_suffix"></property>
+        <property name="docu_sz" column="docu_sz"></property>
+    </class>
+
+</hibernate-mapping>
